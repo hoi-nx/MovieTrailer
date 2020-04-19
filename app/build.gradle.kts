@@ -1,4 +1,5 @@
-import org.jetbrains.kotlin.resolve.calls.model.ResolvedCallArgument.DefaultArgument.arguments
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import com.mtem.buildsrc.Libs
 
 plugins {
     id("com.android.application")
@@ -6,6 +7,8 @@ plugins {
     kotlin("android.extensions")
 }
 
+
+val useReleaseKeystore = rootProject.file("release/app-release.jks").exists()
 
 android {
     compileSdkVersion(29)
@@ -60,13 +63,33 @@ android {
 
     sourceSets {
         getByName("debug") {
-          //  jniLibs.srcDir("../jniLibs")
+            //  jniLibs.srcDir("../jniLibs")
         }
         getByName("release") {
 
         }
     }
 
+    lintOptions {
+        // Disable lintVital. Not needed since lint is run on CI
+        isCheckReleaseBuilds = false
+        // Allow lint to check dependencies
+        isCheckDependencies = true
+        // Ignore any tests
+        isIgnoreTestSources = true
+    }
+
+    applicationVariants.all {
+        outputs.all {
+            var appName = (this as BaseVariantOutputImpl).outputFileName
+            if (appName.contains("debug")) {
+                appName = "MovieTrailer_Debug.apk"
+            } else if (appName.contains("release")) {
+                appName = "MovieTrailer.apk"
+            }
+            outputFileName = appName
+        }
+    }
     //Cach 1
     //export ANDROID_SDK=/Users/stealer/Library/Android/sdk
     //export ANDROID_NDK=/Users/stealer/Library/Android/sdk/ndk/21.0.6113669
@@ -103,13 +126,34 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.71")
-    implementation("androidx.core:core-ktx:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("com.google.android.material:material:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    implementation(Libs.Kotlin.stdlib)
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.appcompat)
+    implementation(Libs.AndroidX.constraintlayout)
+    implementation(Libs.Google.material)
+
+    implementation(Libs.AndroidX.browser)
+    implementation(Libs.AndroidX.palette)
+    implementation(Libs.AndroidX.recyclerview)
+    implementation(Libs.AndroidX.emoji)
+    implementation(Libs.AndroidX.preference)
+    implementation(Libs.AndroidX.Fragment.fragment)
+    implementation(Libs.AndroidX.Fragment.fragmentKtx)
+    implementation(Libs.AndroidX.Navigation.fragment)
+    implementation(Libs.AndroidX.Navigation.ui)
+
+    testImplementation(Libs.junit)
+    testImplementation(Libs.robolectric)
+    testImplementation(Libs.mockK)
+    testImplementation(Libs.AndroidX.Test.core)
+    testImplementation(Libs.AndroidX.Test.runner)
+    testImplementation(Libs.AndroidX.Test.rules)
+    testImplementation(Libs.AndroidX.Test.espressoCore)
+}
+if (file("google-services.json").exists()) {
+    plugins {
+        id("com.google.gms.google-services")
+    }
+
 }
 

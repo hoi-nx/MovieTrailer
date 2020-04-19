@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="MovieTrailer.app" target="1.7" />
+      <module name="MovieTrailer.buildSrc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
