@@ -18,7 +18,7 @@ object Libs {
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
 
     object Google {
-        const val material = "com.google.android.material:material:1.1.0-beta01"
+        const val material = "com.google.android.material:material:1.1.0-alpha09"
         const val gmsGoogleServices = "com.google.gms:google-services:4.3.2"
     }
 
@@ -31,7 +31,7 @@ object Libs {
     }
 
     object Coroutines {
-        private const val version = "1.3.2"
+        private const val version = "1.3.5-1.4-M1"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"

@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="MaterialShapeConstraintLayout">
+        <attr name="materialBackgroundTopLeftRadius" format="dimension" />
+        <attr name="materialBackgroundTopRightRadius" format="dimension" />
+        <attr name="materialBackgroundColor" format="color" />
+    </declare-styleable>
+</resources>

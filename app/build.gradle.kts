@@ -15,7 +15,7 @@ android {
     buildToolsVersion("29.0.3")
     defaultConfig {
         applicationId = "com.mteam.movietrailer"
-        minSdkVersion(16)
+        minSdkVersion(21)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
@@ -126,6 +126,7 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(":libraries:base-ui"))
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.appcompat)
@@ -142,13 +143,14 @@ dependencies {
     implementation(Libs.AndroidX.Navigation.fragment)
     implementation(Libs.AndroidX.Navigation.ui)
 
-    testImplementation(Libs.junit)
-    testImplementation(Libs.robolectric)
-    testImplementation(Libs.mockK)
-    testImplementation(Libs.AndroidX.Test.core)
-    testImplementation(Libs.AndroidX.Test.runner)
-    testImplementation(Libs.AndroidX.Test.rules)
-    testImplementation(Libs.AndroidX.Test.espressoCore)
+
+    implementation(Libs.Epoxy.epoxy)
+    implementation(Libs.Epoxy.paging)
+    implementation(Libs.Epoxy.dataBinding)
+
+    testImplementation("junit:junit:4.13")
+    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 }
 if (file("google-services.json").exists()) {
     plugins {
