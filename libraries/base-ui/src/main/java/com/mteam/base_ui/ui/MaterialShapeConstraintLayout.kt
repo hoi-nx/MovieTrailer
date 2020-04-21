@@ -24,7 +24,6 @@ class MaterialShapeConstraintLayout @JvmOverloads constructor(
                 val topLeft = ta.getDimensionPixelSize(R.styleable.MaterialShapeConstraintLayout_materialBackgroundTopLeftRadius, 0)
                 if (topLeft > 0) {
                     shapeAppearanceModel.setTopLeftCorner(CornerFamily.ROUNDED, topLeft)
-//                    shapeAppearanceModel.topLeftCornerSize = MaterialShapeUtils.createCornerTreatment(CornerFamily.ROUNDED, topLeft)
                 }
                 val topRight = ta.getDimensionPixelSize(
                         R.styleable.MaterialShapeConstraintLayout_materialBackgroundTopRightRadius, 0)

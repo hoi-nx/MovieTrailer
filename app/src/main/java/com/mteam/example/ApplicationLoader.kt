@@ -1,4 +1,4 @@
-package com.mteam.movietrailer
+package com.mteam.example
 
 import android.app.Application
 
