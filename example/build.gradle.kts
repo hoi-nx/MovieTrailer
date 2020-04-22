@@ -44,6 +44,9 @@ dependencies {
     implementation(Libs.Epoxy.epoxy)
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
+    implementation(Libs.mvRx)
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    implementation ("androidx.recyclerview:recyclerview:1.1.0")
 
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")

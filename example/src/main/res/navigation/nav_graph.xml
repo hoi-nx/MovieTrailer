@@ -1,3 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph" />
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentChooseExample">
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.mteam.example.fragment.MovieFragment"
+        android:label="MovieFragment" >
+        <action
+            android:id="@+id/action_movieFragment_to_watchlistFragment"
+            app:destination="@id/watchlistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchlistFragment"
+        android:name="com.mteam.example.fragment.WatchlistFragment"
+        android:label="WatchlistFragment" />
+    <fragment
+        android:id="@+id/fragmentChooseExample"
+        android:name="com.mteam.example.fragment.FragmentChooseExample"
+        android:label="FragmentChooseExample" >
+        <action
+            android:id="@+id/action_fragmentChooseExample_to_movieFragment"
+            app:destination="@id/movieFragment" />
+    </fragment>
+</navigation>

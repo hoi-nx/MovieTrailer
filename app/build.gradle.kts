@@ -61,14 +61,14 @@ android {
         }
     }
 
-    sourceSets {
-        getByName("debug") {
-            //  jniLibs.srcDir("../jniLibs")
-        }
-        getByName("release") {
-
-        }
-    }
+//    sourceSets {
+//        getByName("debug") {
+//            //  jniLibs.srcDir("../jniLibs")
+//        }
+//        getByName("release") {
+//
+//        }
+//    }
 
     lintOptions {
         // Disable lintVital. Not needed since lint is run on CI
@@ -147,6 +147,7 @@ dependencies {
     implementation(Libs.Epoxy.epoxy)
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
+    implementation(Libs.mvRx)
 
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
