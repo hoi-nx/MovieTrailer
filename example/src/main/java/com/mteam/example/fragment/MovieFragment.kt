@@ -3,8 +3,13 @@ package com.mteam.example.fragment
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import com.airbnb.mvrx.*
 import com.mteam.example.MovieAdapter
 import com.mteam.example.R
@@ -27,6 +32,8 @@ import kotlinx.android.synthetic.main.fragment_all_movies.*
  * Async allows your state’s properties to exist in different states, depending on the ViewModelState.
  * Async has four types: 1: Uninitialized, 2: Loading, 3: Success, 4 :Fail
  * Thank for example of By Subhrajyoti Sen : https://www.raywenderlich.com/8121045-mvrx-android-on-autopilot-getting-started
+ * https://chris.banes.dev/2018/02/18/fragmented-transitions/
+ * https://github.com/material-components/material-components-android/blob/master/docs/theming/Motion.mdgi
  */
 class MovieFragment : BaseMvRxFragment() {
     private lateinit var movieAdapter: MovieAdapter
@@ -49,7 +56,6 @@ class MovieFragment : BaseMvRxFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         movieAdapter = MovieAdapter(object : MovieAdapter.WatchlistListener {
             override fun addToWatchlist(movieId: Long) {
                 // call ViewModel to add movie to watchlist
@@ -60,11 +66,37 @@ class MovieFragment : BaseMvRxFragment() {
                 // call ViewModel to remove movie from watchlist
                 watchlistViewModel.removeMovieFromWatchlist(movieId)
             }
+        },onDoggoClickListener = { view, movie ->
+            val extraInfoForSharedElement = FragmentNavigatorExtras(
+                view to movie.posterLink
+            )
+            val toMovieFragment = MovieFragmentDirections.toDetailMovieFragment(movie.name, movie.isWatchlisted,movie.posterLink)
+
+            navigate(toMovieFragment, extraInfoForSharedElement)
+
         })
-        all_movies_recyclerview.adapter = movieAdapter
+        all_movies_recyclerview.run {
+            adapter = movieAdapter
+            setHasFixedSize(true)
+            postponeEnterTransition()
+
+//            viewTreeObserver.addOnPreDrawListener {
+//                startPostponedEnterTransition()
+//                true
+//            }
+            (view?.parent as? ViewGroup)?.doOnPreDraw {
+                // Parent has been drawn. Start transitioning!
+                startPostponedEnterTransition()
+            }
+        }
         watchlistViewModel.errorMessage.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) = with(findNavController()) {
+        currentDestination?.getAction(destination.actionId)
+            ?.let { navigate(destination, extraInfo) }
     }
 
     override fun invalidate() {

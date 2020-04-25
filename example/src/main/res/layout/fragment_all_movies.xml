@@ -22,8 +22,8 @@
       android:clipToPadding="false"
       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
       app:layout_constraintVertical_bias="0"
-      app:spanCount="2"
       tools:itemCount="10"
+      app:spanCount="2"
       tools:listitem="@layout/movie_viewholder_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

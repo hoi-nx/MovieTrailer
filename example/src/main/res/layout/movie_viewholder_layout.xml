@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/movie_poster_imageview"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:src="@drawable/ic_remove_from_watchlist"
         tools:srcCompat="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="parent" />

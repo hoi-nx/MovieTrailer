@@ -4,6 +4,28 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    id("androidx.navigation.safeargs.kotlin")
+
+}
+
+buildscript {
+    val kotlin_version by extra("1.3.72")
+    //    ext.kotlin_version = '1.3.61'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath(com.mtem.buildsrc.Libs.androidGradlePlugin)
+        classpath(com.mtem.buildsrc.Libs.Kotlin.gradlePlugin)
+        classpath(com.mtem.buildsrc.Libs.Kotlin.extensions)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.2")
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
 }
 android {
     compileSdkVersion(29)
@@ -45,8 +67,8 @@ dependencies {
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
     implementation(Libs.mvRx)
-    implementation ("com.github.bumptech.glide:glide:4.11.0")
-    implementation ("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    implementation("androidx.recyclerview:recyclerview:1.1.0")
 
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
