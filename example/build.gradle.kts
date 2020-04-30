@@ -1,4 +1,4 @@
-import com.mtem.buildsrc.Libs
+import com.mtem.buildsrc.*
 
 plugins {
     id("com.android.application")
@@ -45,6 +45,20 @@ android {
         jvmTarget = "1.8"
     }
 }
+
+fun DependencyHandlerScope.execDeps(vararg deps: List<Pair<String, LibType>>) {
+    deps.forEach { collection ->
+        collection.forEach {
+            when (it.second) {
+                is LibType.Library -> implementation(it.first)
+                is LibType.Compiler -> kapt(it.first)
+                is LibType.TestLib -> testImplementation(it.first)
+                is LibType.AndroidTestLib -> androidTestImplementation(it.first)
+            }
+        }
+    }
+}
+
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Kotlin.stdlib)
@@ -79,13 +93,16 @@ dependencies {
     implementation(Libs.AndroidX.Room.ktx)
     implementation(Libs.AndroidX.Room.runtime)
     implementation(Libs.AndroidX.Work.runtimeKtx)
-
-
-
+    implementation(Libs.AndroidX.Lifecycle.extensions)
+    implementation(Libs.AndroidX.Lifecycle.livedata)
+    implementation(Libs.AndroidX.Lifecycle.livedataCore)
     implementation(Libs.Epoxy.epoxy)
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
-    implementation(Libs.mvRx)
+
+    execDeps(
+        Dependencies.androidLibs
+    )
     implementation("com.github.bumptech.glide:glide:4.11.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
 

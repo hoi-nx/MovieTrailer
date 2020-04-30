@@ -1,7 +1,25 @@
 package com.mtem.buildsrc
 
+typealias DepsList = List<Pair<String,LibType>>
+
+sealed class LibType {
+    object Library: LibType()
+    object Compiler: LibType()
+    object TestLib: LibType()
+    object AndroidTestLib: LibType()
+}
+
+
+
+
 object Versions {
     const val ktlint = "0.33.0"
+
+}
+object Dependencies{
+    val androidLibs: DepsList = listOf(
+        Libs.mvRx to LibType.Library
+    )
 }
 
 object Libs {
@@ -85,6 +103,8 @@ object Libs {
             private const val version = "2.2.0-rc01"
             const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+            const val livedataCore = "androidx.lifecycle:lifecycle-livedata-core:$version"
         }
 
         object Room {
@@ -148,5 +168,4 @@ object Libs {
         const val annotationDagger2 = "com.squareup.inject:assisted-inject-annotations-dagger2:$version"
         const val processorDagger2 = "com.squareup.inject:assisted-inject-processor-dagger2:$version"
     }
-
 }
