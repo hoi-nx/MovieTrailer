@@ -25,5 +25,18 @@ class FragmentChooseExample : Fragment() {
             findNavController().navigate(R.id.action_fragmentChooseExample_to_movieFragment)
 
         }
+        buttonTheme.setOnClickListener {
+            findNavController().navigate(R.id.toDynamicThemeFragment)
+        }
+        buttonPipVideo.setOnClickListener {
+            findNavController().navigate(R.id.toPipFragment)
+        }
+
+        buttonPipVideoActivity.setOnClickListener {
+            findNavController().navigate(R.id.topipActivity)
+        }
+        buttonCoroutine.setOnClickListener {
+            findNavController().navigate(R.id.toFragmentCoroutineUseCase)
+        }
     }
 }

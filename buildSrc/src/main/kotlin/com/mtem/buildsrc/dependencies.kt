@@ -5,7 +5,7 @@ object Versions {
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.0-alpha06"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.0-alpha08"
     const val mvRx = "com.airbnb.android:mvrx:1.3.0"
     const val gravitySnapHelper = "com.github.rubensousa:gravitysnaphelper:2.2.0"
 
@@ -37,7 +37,6 @@ object Libs {
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
-
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"
         const val browser = "androidx.browser:browser:1.0.0"
@@ -104,8 +103,9 @@ object Libs {
     }
 
     object RxJava {
-        const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.11"
         const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+        const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.19"
+        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
     }
 
     object Dagger {
@@ -121,6 +121,7 @@ object Libs {
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
         const val retrofit_rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava2:$version"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:$version"
+        const val gson = "com.google.code.gson:gson:2.8.6"
     }
 
     object OkHttp {

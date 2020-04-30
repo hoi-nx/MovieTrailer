@@ -13,4 +13,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Dynamic theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mvRxButton" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonPipVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pip Video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTheme" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonPipVideoActivity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pip Video Activity for Android 8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPipVideo" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCoroutine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Coroutine use cases"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPipVideoActivity" />
 </androidx.constraintlayout.widget.ConstraintLayout>

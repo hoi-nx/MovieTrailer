@@ -5,6 +5,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
 
 }
 
@@ -32,7 +33,7 @@ android {
     buildToolsVersion("29.0.3")
     defaultConfig {
         applicationId = "com.mteam.example"
-        minSdkVersion(21)
+        minSdkVersion(26)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
@@ -61,6 +62,24 @@ dependencies {
     implementation(Libs.AndroidX.Fragment.fragmentKtx)
     implementation(Libs.AndroidX.Navigation.fragment)
     implementation(Libs.AndroidX.Navigation.ui)
+
+    implementation(Libs.Retrofit.retrofit)
+    implementation(Libs.Retrofit.gsonConverter)
+    implementation(Libs.Retrofit.retrofit_rxjava_adapter)
+    implementation(Libs.Retrofit.gson)
+    implementation(Libs.RxJava.rxJava)
+    implementation(Libs.RxJava.rxAndroid)
+    implementation(Libs.RxJava.rxKotlin)
+    implementation(Libs.OkHttp.loggingInterceptor)
+    implementation(Libs.OkHttp.okhttp)
+
+
+    implementation(Libs.AndroidX.Room.common)
+    kapt(Libs.AndroidX.Room.compiler)
+    implementation(Libs.AndroidX.Room.ktx)
+    implementation(Libs.AndroidX.Room.runtime)
+    implementation(Libs.AndroidX.Work.runtimeKtx)
+
 
 
     implementation(Libs.Epoxy.epoxy)

@@ -11,6 +11,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
 import com.airbnb.mvrx.*
+import com.mteam.example.MainActivity
 import com.mteam.example.MovieAdapter
 import com.mteam.example.R
 import com.mteam.example.WatchlistViewModel
@@ -34,6 +35,7 @@ import kotlinx.android.synthetic.main.fragment_all_movies.*
  * Thank for example of By Subhrajyoti Sen : https://www.raywenderlich.com/8121045-mvrx-android-on-autopilot-getting-started
  * https://chris.banes.dev/2018/02/18/fragmented-transitions/
  * https://github.com/material-components/material-components-android/blob/master/docs/theming/Motion.mdgi
+ * https://proandroiddev.com/change-theme-dynamically-with-circular-reveal-animation-on-android-8cd574f5f0d8
  */
 class MovieFragment : BaseMvRxFragment() {
     private lateinit var movieAdapter: MovieAdapter
@@ -51,6 +53,7 @@ class MovieFragment : BaseMvRxFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_all_movies, container, false)
     }
 

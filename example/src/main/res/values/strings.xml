@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">Example</string>
+
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="info">Info</string>
+    <string name="info_description">Information about this video</string>
+    <string name="info_uri" translatable="false">https://peach.blender.org/</string>
+    <string name="fast_forward">Fast forward</string>
+    <string name="fast_rewind">Fast rewind</string>
+    <string name="minimize">Minimize</string>
+    <string name="enter_picture_in_picture">Enter Picture-in-Picture mode</string>
+    <string name="explanation"><![CDATA[
+    This sample demonstrates basic usage of Picture-in-Picture mode for handheld devices.
+    The sample plays a video. The video keeps on playing when the app is turned in to
+    Picture-in-Picture mode. On Picture-in-Picture screen, the app shows an action item to pause or
+    resume the video.
+    ]]></string>
+    <string name="switch_custom">Switch to custom actions example</string>
+    <string name="switch_media_session">Switch to using MediaSession</string>
+    <string name="title_bigbuckbunny">Big Buck Bunny</string>
+
+    <string name="perform_single_network_request_on_background_thread">Load recent Android Versions</string>
+    <string name="perform_2_network_requests_sequentially">Load Features of most recent Android Version</string>
+    <string name="load_features_of_android_versions_sequentially">Load Features of Android Versions sequentially</string>
+    <string name="load_features_of_android_versions_concurrently">Load Features of Android Versions concurrently</string>
+    <string name="duration">Operation took %d ms</string>
+    <string name="duration_calculation">Calculation took %d ms</string>
+    <string name="duration_stringconversion">Converting BigInteger to String took %d ms</string>
+    <string name="timeout">TimeOut in ms: </string>
+    <string name="load_android_versions">Load Android Versions</string>
+    <string name="clear_database">Clear Database</string>
+    <string name="loading_data_from_database">loading data from database</string>
+    <string name="loading_data_from_network">loading data from network</string>
+    <string name="load_recent_android_versions_and_do_some_calculations">Load Recent Android Versions and do some calculations</string>
+    <string name="factorial_of">Factorial of:</string>
+    <string name="calculate">Calculate</string>
+    <string name="number_of_coroutines">Number of Coroutines:</string>
+    <string name="device_cores">Your device has %d cores</string>
+    <string name="cancel">Cancel</string>
+    <string name="workmanager_request">A work manager worker was requested to send an analytics request.</string>
+    <string name="dispatcher">Coroutine Dispatcher:</string>
+    <string name="yield_during_calculation">yield() during calculation</string>
+
+    <string-array name="dispatchers">
+        <item>Default</item>
+        <item>IO</item>
+        <item>Main</item>
+        <item>Unconfined</item>
+    </string-array>
 </resources>
