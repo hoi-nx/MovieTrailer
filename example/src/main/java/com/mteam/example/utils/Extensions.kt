@@ -1,4 +1,5 @@
 package com.mteam.example.utils
+
 import android.content.Context
 import android.os.Build
 import android.text.Html
@@ -6,6 +7,19 @@ import android.text.Spanned
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.retryWhen
+import java.io.IOException
 
 /**
  * Extension method to show toast for Context.
@@ -52,4 +66,39 @@ fun View.hideKeyboard(): Boolean {
     } catch (ignored: RuntimeException) {
     }
     return false
+}
+
+fun <T> Single<T>.with(): Single<T> =
+    subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+
+
+private const val INITIAL_BACKOFF = 2000L
+
+fun getBackoffDelay(attempt: Long) = INITIAL_BACKOFF * (attempt + 1)
+
+
+//https://medium.com/androiddevelopers/lessons-learnt-using-coroutines-flow-4a6b285c0d06
+fun <T : Any> Flow<Result<T>>.applyCommonSideEffects() =
+    retryWhen { cause, attempt ->
+        when {
+            (cause is IOException && attempt < 3L) -> {
+                delay(getBackoffDelay(attempt))
+                true
+            }
+            else -> {
+                false
+            }
+        }
+    }
+        .onStart { emit(Progress(isLoading = true)) }
+        .onCompletion { emit(Progress(isLoading = false)) }
+
+fun Job?.cancelIfActive() {
+    if (this?.isActive == true) {
+        cancel()
+    }
+}
+
+inline fun <T> LiveData<T>.observeNotNull(owner: LifecycleOwner, crossinline observer: (T) -> Unit) {
+    this.observe(owner, Observer { it?.apply(observer) })
 }

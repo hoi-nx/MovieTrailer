@@ -6,6 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
+/**
+ * https://github.com/herisulistiyanto/Simple-Retrofit-Coroutine
+ */
 abstract class BaseDataSource {
 
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): ResponseResult<ResponseWrapper<T>> {

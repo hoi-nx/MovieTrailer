@@ -66,6 +66,8 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
+    implementation(Libs.Coroutines.core)
+    implementation(Libs.Coroutines.android)
 
     implementation(Libs.AndroidX.browser)
     implementation(Libs.AndroidX.palette)
@@ -99,6 +101,8 @@ dependencies {
     implementation(Libs.Epoxy.epoxy)
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
+    implementation(Libs.Dagger.dagger)
+    kapt(Libs.Dagger.compiler)
 
     execDeps(
         Dependencies.androidLibs

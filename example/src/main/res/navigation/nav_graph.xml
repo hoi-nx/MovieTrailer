@@ -46,6 +46,9 @@
         <action
             android:id="@+id/toFragmentCoroutineUseCase"
             app:destination="@id/fragmentCoroutineUseCase" />
+        <action
+            android:id="@+id/toLoginActivity"
+            app:destination="@id/loginActivity" />
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
@@ -187,4 +190,8 @@
         android:id="@+id/calculationInBackgroundActivity"
         android:name="com.mteam.example.fragment.usecase10.CalculationInBackgroundActivity"
         android:label="CalculationInBackgroundActivity" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.mteam.example.fragment.login.LoginActivity"
+        android:label="LoginActivity" />
 </navigation>

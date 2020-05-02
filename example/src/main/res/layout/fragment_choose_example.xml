@@ -48,4 +48,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPipVideoActivity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLoginDragger"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Drager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCoroutine" />
 </androidx.constraintlayout.widget.ConstraintLayout>

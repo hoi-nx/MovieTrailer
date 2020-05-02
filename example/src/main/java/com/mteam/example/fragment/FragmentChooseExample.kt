@@ -38,5 +38,8 @@ class FragmentChooseExample : Fragment() {
         buttonCoroutine.setOnClickListener {
             findNavController().navigate(R.id.toFragmentCoroutineUseCase)
         }
+        buttonLoginDragger.setOnClickListener {
+            findNavController().navigate(R.id.toLoginActivity)
+        }
     }
 }
