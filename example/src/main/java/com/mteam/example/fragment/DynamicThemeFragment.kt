@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.os.Build
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.LinearLayout
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatDelegate
@@ -17,15 +19,17 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
-import androidx.core.view.LayoutInflaterCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.mteam.example.MainActivity
 import com.mteam.example.R
+import com.mteam.example.widget.CubicBezierInterpolator
 import kotlinx.android.synthetic.main.dynamic_theme_fragment.*
-import kotlin.math.hypot
+import kotlin.math.max
+import kotlin.math.sqrt
+
 
 class DynamicThemeFragment : Fragment() {
+    val pos = IntArray(2)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +45,22 @@ class DynamicThemeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.setOnClickListener {
+        val vto = imageDrarkTheme.viewTreeObserver
+        if (vto.isAlive) {
+            vto.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    imageDrarkTheme.getLocationInWindow(pos)
+                    pos[0] += imageDrarkTheme.measuredWidth / 2
+                    pos[1] += imageDrarkTheme.measuredHeight / 2
+                    if (Build.VERSION.SDK_INT < 16) {
+                        vto.removeGlobalOnLayoutListener(this)
+                    } else {
+                        vto.removeOnGlobalLayoutListener(this)
+                    }
+                }
+            })
+        }
+        imageDrarkTheme.setOnClickListener {
             val newTheme = when (ThemeManager.theme) {
                 ThemeManager.Theme.DARK -> ThemeManager.Theme.LIGHT
                 ThemeManager.Theme.LIGHT -> ThemeManager.Theme.DARK
@@ -56,31 +75,69 @@ class DynamicThemeFragment : Fragment() {
             return
         }
 
-        if (imageView.isVisible) {
-            return
+        if (Build.VERSION.SDK_INT >= 21) {
+            if (imageView.visibility == View.VISIBLE) {
+                return
+            }
+            try {
+//                var w = 0;
+//                var h = 0;
+//                val vto = container.viewTreeObserver
+//                if (vto.isAlive) {
+//                    vto.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+//                        override fun onGlobalLayout() {
+//                             w = container.measuredWidth
+//                             h = container.measuredHeight
+//                            if (Build.VERSION.SDK_INT < 16) {
+//                                vto.removeGlobalOnLayoutListener(this)
+//                            } else {
+//                                vto.removeOnGlobalLayoutListener(this)
+//                            }
+//                        }
+//                    })
+//                }
+
+
+                val w = container.measuredWidth
+                val h = container.measuredHeight
+
+                val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                container.draw(canvas)
+                imageView.setImageBitmap(bitmap)
+                imageView.visibility = View.VISIBLE
+                val finalRadius = max(
+                    sqrt(
+                        (w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1]).toDouble()
+                    ),
+                    sqrt(pos[0] * pos[0] + (h - pos[1]) * (h - pos[1]).toDouble())
+                ).toFloat()
+//        val finalRadius = hypot(w.toFloat(), h.toFloat())
+
+                val anim =
+                    ViewAnimationUtils.createCircularReveal(
+                        imageView,
+                        pos[0],
+                        pos[1],
+                        0f,
+                        finalRadius
+                    )
+                anim.interpolator = CubicBezierInterpolator.easeInOutQuad
+                anim.duration = 1000L
+                anim.doOnEnd {
+                    imageView.setImageDrawable(null)
+                    imageView.visibility = View.GONE
+
+                }
+                anim.start()
+
+            } catch (e: Exception) {
+
+            }
+
+
         }
-
-        val w = container.measuredWidth
-        val h = container.measuredHeight
-
-        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        container.draw(canvas)
-
-        imageView.setImageBitmap(bitmap)
-        imageView.isVisible = true
-
-        val finalRadius = hypot(w.toFloat(), h.toFloat())
-
         ThemeManager.theme = theme
-
-        val anim = ViewAnimationUtils.createCircularReveal(imageView, w / 2, h / 2, finalRadius, 0f)
-        anim.duration = 400L
-        anim.doOnEnd {
-            imageView.setImageDrawable(null)
-            imageView.isVisible = false
-        }
-        anim.start()
     }
 }
 
