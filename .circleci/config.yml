@@ -136,6 +136,7 @@ jobs:
                         😜-> Click here for more detail: $CIRCLE_BUILD_URL
                         😜-> Branch: $CIRCLE_BRANCH
                         😜-> Pull request: $CIRCLE_PULL_REQUEST"
+              curl -s -X POST https://api.telegram.org/bot1259984344:AAHkQg0o9orWOP79Afm2bp2XLYHs5vEJXlU/sendSticker -d chat_id=-461250819 -d sticker=CAACAgIAAxkBAAMXXr5gEvLvsy5TeLCu2T0zjtKGZWAAAsEBAAJWnb0Ky9vpP2Sb6hYZBA
             fi
       - run:
           name: Sending notification on success
@@ -147,6 +148,7 @@ jobs:
                         😜-> Click here for more detail: $CIRCLE_BUILD_URL
                         😜-> Branch: $CIRCLE_BRANCH
                         😜-> Pull request: $CIRCLE_PULL_REQUEST"
+              curl -s -X POST https://api.telegram.org/bot1259984344:AAHkQg0o9orWOP79Afm2bp2XLYHs5vEJXlU/sendSticker -d chat_id=-461250819 -d sticker=CAACAgIAAxkBAAMcXr5kVIEnY_pjOLI30wykEnijcuMAAsIBAAJWnb0KmXhIgEI4bZAZBA
             fi
 orbs:
   android: circleci/android@0.2.1
