@@ -1,8 +1,138 @@
 # https://circleci.com/orbs/registry/licensing for details.
 # https://circleci.com/orbs/registry/orb/circleci/android
-orbs:
-  android: circleci/android@0.2.1
 commands:
+  status:
+    description: |
+      Send a status alert at the the end of a job based on success or failure. Must be the last step in a job.
+    parameters:
+      chat_id:
+        default: "-461250819"
+        description: |
+          Enter either your id of target chat value here or use the CircleCI UI to add your chat id under the 'TELEGRAM_CHAT_ID' environment variable
+        type: string
+      fail_only:
+        default: false
+        description: |
+          If `true`, notifications of successful jobs will not be sent.
+        type: boolean
+      failure_message:
+        default: '[.](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/large-red-circle_1f534.png)
+            A $CIRCLE_JOB job has failed!'
+        description: Enter custom message.
+        type: string
+      only_for_branches:
+        default: ""
+        description: |
+          If set, a comma-separated list of branches for which to send notifications. No spaces.
+        type: string
+      success_message:
+        default: '[.](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/party-popper_1f389.png)
+            A $CIRCLE_JOB job has succeeded!'
+        description: Enter custom message.
+        type: string
+      success_only:
+        default: false
+        description: |
+          If `true`, notifications of failed jobs will not be sent.
+        type: boolean
+      token:
+        default: "1259984344:AAHkQg0o9orWOP79Afm2bp2XLYHs5vEJXlU"
+        description: |
+          Enter either your token value here or use the CircleCI UI to add your token under the 'TELEGRAM_TOKEN' environment variable
+        type: string
+    steps:
+      - run:
+          command: |
+            which curl > curl_exists; echo $? | grep -q '1' && echo curl not installed && rm curl_exists && exit 1
+            rm curl_exists
+          name: Provide error if curl is not installed.
+      - run:
+          command: |
+            which jq > jq_exists; echo $? | grep -q '1' && echo jq not installed && rm jq_exists && exit 1
+            rm jq_exists
+          name: Provide error if jq is not installed.
+      - run:
+          command: |
+            echo 'export TELEGRAM_BUILD_STATUS="failure"' >> $BASH_ENV
+          name: Telegram - Setting Failure Condition
+          when: on_fail
+      - run:
+          command: |
+            echo 'export TELEGRAM_BUILD_STATUS="success"' >> $BASH_ENV
+          name: Telegram - Setting Success Condition
+          when: on_success
+      - run:
+          command: |
+            if [ ! -x /bin/bash ]; then
+              echo Bash not installed.
+              exit 1
+            fi
+          name: Provide error if non-bash shell
+      - run:
+          command: |
+            if [ -z "<< parameters.token >>" ]; then
+              echo "No TELEGRAM_TOKEN provided".
+              echo "Please input your TELEGRAM_TOKEN value either in the settings for this project, or as a parameter for this orb."
+              exit 1
+            fi
+          name: Provide error if token not provided
+      - run:
+          command: |
+            if [ -z "<< parameters.chat_id >>" ]; then
+              echo "No TELEGRAM_CHAT_ID provided".
+              echo "Please input your TELEGRAM_CHAT_ID value either in the settings for this project, or as a parameter for this orb."
+              exit 1
+            fi
+          name: Provide error if chat id not provided
+      - run:
+          command: |
+            send_msg () {
+                curl -s -X POST https://api.telegram.org/bot<< parameters.token >>/sendMessage \
+                    -d chat_id=<< parameters.chat_id >> \
+                    -d text="$1" -d parse_mode=Markdown
+            }
+
+            # check if we should send a message for current branch
+            current_branch_in_filter=false
+
+            IFS="," read -ra BRANCH_FILTERS \<<< "<< parameters.only_for_branches >>"
+
+            for i in "${BRANCH_FILTERS[@]}"; do
+              if [ "${i}" == "${CIRCLE_BRANCH}" ]; then
+                current_branch_in_filter=true
+              fi
+            done
+
+            if [ "x" == "x<< parameters.only_for_branches>>" ] || [ "$current_branch_in_filter" = true ]; then
+              #If successful
+              if [ "$TELEGRAM_BUILD_STATUS" == "success" ]; then
+                # Skip if fail_only is set
+                if [ << parameters.fail_only >> = true ]; then
+                  echo "The job completed successfully"
+                  echo '"fail_only" is set to "true". No Telegram notification sent.'
+                else
+                  send_msg "
+                  << parameters.success_message >>
+                  "
+                  echo "Job completed successfully. Alert sent."
+                fi
+              else
+                #If failed
+                #Skip if success_only
+                if [ << parameters.success_only >> = true ]; then
+                  echo "The job failed"
+                  echo '"success_only" is set to "true". No Telegram notification sent.'
+                else
+                  send_msg "<< parameters.failure_message >>"
+                  echo "Job failed. Alert send"
+                fi
+              fi
+            else
+              echo "Current branch is not included in only_for_branches filter, so no status alert will be sent."
+            fi
+          name: Telegram - Sending Status Alert
+          shell: /bin/bash
+          when: always
   accept-licenses:
     description: |
       Accept all Android SDK Manager licenses
@@ -116,4 +246,8 @@ jobs:
     steps:
       - checkout
       - accept-licenses
+      - run: exit 0
+      - status
+orbs:
+  android: circleci/android@0.2.1
 version: 2.1
