@@ -11,11 +11,11 @@ plugins {
 val useReleaseKeystore = rootProject.file("release/app-release.jks").exists()
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(29)
     defaultConfig {
         applicationId = "com.mteam.movietrailer"
         minSdkVersion(21)
-        targetSdkVersion(28)
+        targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
         ndkVersion = "21.0.6113669"
