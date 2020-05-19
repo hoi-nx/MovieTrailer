@@ -19,11 +19,17 @@ android {
     }
 }
 dependencies {
+    api(project(":libraries:appconfig"))
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
+    implementation(Libs.Coroutines.core)
+    implementation(Libs.okio)
+    implementation(Libs.timber)
+    implementation(Libs.OkHttp.okhttp)
+    implementation(Libs.OkHttp.loggingInterceptor)
 
 
     testImplementation("junit:junit:4.12")

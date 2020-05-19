@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.mteam.example.widget.MovieView
+    <com.mteam.movie_trailer.widget.MovieView
         android:id="@+id/movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

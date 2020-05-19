@@ -1,5 +1,4 @@
 package com.movie.appconfig
-
 interface AppConfig {
     val isDebug: Boolean
     val applicationId: String

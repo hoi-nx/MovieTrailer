@@ -5,7 +5,7 @@
     app:startDestination="@id/fragmentChooseExample">
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.mteam.example.fragment.MovieFragment"
+        android:name="com.mteam.movie_trailer.fragment.MovieFragment"
         android:label="MovieFragment">
         <action
             android:id="@+id/action_movieFragment_to_watchlistFragment"
@@ -24,11 +24,11 @@
     </fragment>
     <fragment
         android:id="@+id/watchlistFragment"
-        android:name="com.mteam.example.fragment.WatchlistFragment"
+        android:name="com.mteam.movie_trailer.fragment.WatchlistFragment"
         android:label="WatchlistFragment" />
     <fragment
         android:id="@+id/fragmentChooseExample"
-        android:name="com.mteam.example.fragment.FragmentChooseExample"
+        android:name="com.mteam.movie_trailer.fragment.FragmentChooseExample"
         android:label="FragmentChooseExample"
         app:startDestination="@id/action_fragmentChooseExample_to_movieFragment">
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
-        android:name="com.mteam.example.fragment.DetailMovieFragment"
+        android:name="com.mteam.movie_trailer.fragment.DetailMovieFragment"
         android:label="DetailMovieFragment">
         <argument
             android:name="name"
@@ -71,19 +71,19 @@
     </fragment>
     <fragment
         android:id="@+id/dynamicThemeFragment"
-        android:name="com.mteam.example.fragment.DynamicThemeFragment"
+        android:name="com.mteam.movie_trailer.fragment.DynamicThemeFragment"
         android:label="DynamicThemeFragment" />
     <fragment
         android:id="@+id/fragmentPipVideo"
-        android:name="com.mteam.example.fragment.FragmentPipVideo"
+        android:name="com.mteam.movie_trailer.fragment.FragmentPipVideo"
         android:label="FragmentPipVideo" />
     <activity
         android:id="@+id/pipActivity"
-        android:name="com.mteam.example.activity.PipActivity"
+        android:name="com.mteam.movie_trailer.activity.PipActivity"
         android:label="PipActivity" />
     <fragment
         android:id="@+id/fragmentCoroutineUseCase"
-        android:name="com.mteam.example.fragment.FragmentCoroutineUseCase"
+        android:name="com.mteam.movie_trailer.fragment.FragmentCoroutineUseCase"
         android:label="FragmentCoroutineUseCase" >
         <action
             android:id="@+id/tofragmentSingleNetworkRequest"
@@ -132,55 +132,55 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSingleNetworkRequest"
-        android:name="com.mteam.example.fragment.usecase1.FragmentSingleNetworkRequest"
+        android:name="com.mteam.movie_trailer.fragment.usecase1.FragmentSingleNetworkRequest"
         android:label="FragmentSingleNetworkRequest" />
     <fragment
         android:id="@+id/perform2SequentialNetworkRequestsFragment"
-        android:name="com.mteam.example.fragment.usecase2.Perform2SequentialNetworkRequestsFragment"
+        android:name="com.mteam.movie_trailer.fragment.usecase2.Perform2SequentialNetworkRequestsFragment"
         android:label="Perform2SequentialNetworkRequestsFragment" />
     <fragment
         android:id="@+id/performNetworkRequestsConcurrentlyFragment"
-        android:name="com.mteam.example.fragment.usecase3.PerformNetworkRequestsConcurrentlyFragment"
+        android:name="com.mteam.movie_trailer.fragment.usecase3.PerformNetworkRequestsConcurrentlyFragment"
         android:label="PerformNetworkRequestsConcurrentlyFragment" />
     <fragment
         android:id="@+id/networkRequestWithTimeoutActivity"
-        android:name="com.mteam.example.fragment.usecase5.NetworkRequestWithTimeoutActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase5.NetworkRequestWithTimeoutActivity"
         android:label="NetworkRequestWithTimeoutActivity" />
     <fragment
         android:id="@+id/retryNetworkRequestActivity"
-        android:name="com.mteam.example.fragment.usecase6.RetryNetworkRequestActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase6.RetryNetworkRequestActivity"
         android:label="RetryNetworkRequestActivity" />
     <fragment
         android:id="@+id/timeoutAndRetryRxActivity"
-        android:name="com.mteam.example.fragment.usecase7.rx.TimeoutAndRetryRxActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase7.rx.TimeoutAndRetryRxActivity"
         android:label="TimeoutAndRetryRxActivity" />
     <fragment
         android:id="@+id/timeoutAndRetryActivity"
-        android:name="com.mteam.example.fragment.usecase7.TimeoutAndRetryActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase7.TimeoutAndRetryActivity"
         android:label="TimeoutAndRetryActivity" />
     <fragment
         android:id="@+id/variableAmountOfNetworkRequestsActivity"
-        android:name="com.mteam.example.fragment.usecase4.VariableAmountOfNetworkRequestsActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase4.VariableAmountOfNetworkRequestsActivity"
         android:label="VariableAmountOfNetworkRequestsActivity" />
     <fragment
         android:id="@+id/roomAndCoroutinesActivity"
-        android:name="com.mteam.example.fragment.usecase8.RoomAndCoroutinesActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase8.RoomAndCoroutinesActivity"
         android:label="RoomAndCoroutinesActivity" />
     <fragment
         android:id="@+id/calculationInSeveralCoroutinesActivity"
-        android:name="com.mteam.example.fragment.usecase12.CalculationInSeveralCoroutinesActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase12.CalculationInSeveralCoroutinesActivity"
         android:label="CalculationInSeveralCoroutinesActivity" />
     <fragment
         android:id="@+id/continueCoroutineWhenUserLeavesScreenActivity"
-        android:name="com.mteam.example.fragment.usecase14.ContinueCoroutineWhenUserLeavesScreenActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase14.ContinueCoroutineWhenUserLeavesScreenActivity"
         android:label="ContinueCoroutineWhenUserLeavesScreenActivity" />
     <fragment
         android:id="@+id/exceptionHandlingActivity"
-        android:name="com.mteam.example.fragment.usecase13.ExceptionHandlingActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase13.ExceptionHandlingActivity"
         android:label="ExceptionHandlingActivity" />
     <fragment
         android:id="@+id/performanceAnalysisActivity"
-        android:name="com.mteam.example.fragment.usecase16.PerformanceAnalysisActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase16.PerformanceAnalysisActivity"
         android:label="PerformanceAnalysisActivity" />
     <fragment
         android:id="@+id/workManagerActivity"
@@ -188,10 +188,10 @@
         android:label="WorkManagerActivity" />
     <fragment
         android:id="@+id/calculationInBackgroundActivity"
-        android:name="com.mteam.example.fragment.usecase10.CalculationInBackgroundActivity"
+        android:name="com.mteam.movie_trailer.fragment.usecase10.CalculationInBackgroundActivity"
         android:label="CalculationInBackgroundActivity" />
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.mteam.example.fragment.login.LoginActivity"
+        android:name="com.mteam.movie_trailer.fragment.login.LoginActivity"
         android:label="LoginActivity" />
 </navigation>

@@ -31,6 +31,8 @@ object Libs {
     const val inboxRecyclerView = "me.saket:inboxrecyclerview:2.0.0-beta3"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
+    const val okio = "com.squareup.okio:okio:2.5.0"
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
 
     object Google {
         const val material = "com.google.android.material:material:1.1.0-alpha09"

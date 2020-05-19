@@ -14,6 +14,7 @@ val kotlin_version by extra("1.3.72")
         classpath(com.mtem.buildsrc.Libs.Kotlin.extensions)
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.1")
+        classpath("com.android.tools.build:gradle:4.1.0-alpha09")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

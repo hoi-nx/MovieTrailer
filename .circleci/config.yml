@@ -134,6 +134,7 @@ jobs:
               curl -s -X POST https://api.telegram.org/bot1259984344:AAHkQg0o9orWOP79Afm2bp2XLYHs5vEJXlU/sendMessage -d chat_id=-461250819 -d text="@circleciFather_bot
                         😜-> Repository : $CIRCLE_PROJECT_REPONAME (problem)Your pull request is failed 😡😡😡😡😡
                         😜-> Click here for more detail: $CIRCLE_BUILD_URL
+                        😜-> Click here for repository: $CIRCLE_REPOSITORY_URL
                         😜-> Branch: $CIRCLE_BRANCH
                         😜-> Messages: $(git log --format=oneline -n 1)
                         😜-> Pull request: $CIRCLE_PULL_REQUEST"
@@ -147,6 +148,7 @@ jobs:
               curl -s -X POST https://api.telegram.org/bot1259984344:AAHkQg0o9orWOP79Afm2bp2XLYHs5vEJXlU/sendMessage -d chat_id=-461250819 -d text="@circleciFather_bot
                         😜-> Repository : $CIRCLE_PROJECT_REPONAME (problem)Your pull request is successful 😍😍😍😍😍😍
                         😜-> Click here for more detail: $CIRCLE_BUILD_URL
+                        😜-> Click here for repository: $CIRCLE_REPOSITORY_URL
                         😜-> Branch: $CIRCLE_BRANCH
                         😜-> Messages: $(git log --format=oneline -n 1)
                         😜-> Pull request: $CIRCLE_PULL_REQUEST"
