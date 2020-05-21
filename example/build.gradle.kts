@@ -103,7 +103,9 @@ dependencies {
     implementation(Libs.Epoxy.dataBinding)
     implementation(Libs.Dagger.dagger)
     kapt(Libs.Dagger.compiler)
+    implementation(project(":libraries:base-ui"))
 
+    implementation("com.squareup.picasso:picasso:2.71828")
     execDeps(
         Dependencies.androidLibs
     )

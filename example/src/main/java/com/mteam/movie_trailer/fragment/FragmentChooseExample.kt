@@ -41,5 +41,8 @@ class FragmentChooseExample : Fragment() {
         buttonLoginDragger.setOnClickListener {
             findNavController().navigate(R.id.toLoginActivity)
         }
+        debugView.setOnClickListener {
+            findNavController().navigate(R.id.toDebugView)
+        }
     }
 }

@@ -49,6 +49,9 @@
         <action
             android:id="@+id/toLoginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/toDebugView"
+            app:destination="@id/debugActivity" />
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
@@ -194,4 +197,8 @@
         android:id="@+id/loginActivity"
         android:name="com.mteam.movie_trailer.fragment.login.LoginActivity"
         android:label="LoginActivity" />
+    <activity
+        android:id="@+id/debugActivity"
+        android:name="com.mteam.movie_trailer.debug.DebugActivity"
+        android:label="DebugActivity" />
 </navigation>
