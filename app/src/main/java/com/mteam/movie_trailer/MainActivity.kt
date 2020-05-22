@@ -1,11 +1,14 @@
 package com.mteam.movie_trailer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mteam.base_ui.ui.BaseActivity
+import com.mteam.movie_trailer.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        syllabus.bind(this)
+        viewContainer.inflateBinding(ActivityMainBinding::inflate)
     }
 }

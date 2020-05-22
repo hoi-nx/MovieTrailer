@@ -22,6 +22,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     }
+    viewBinding {
+        isEnabled = true
+    }
 
     kotlinOptions {
         jvmTarget = "1.8"
@@ -148,6 +151,9 @@ dependencies {
     implementation(Libs.Epoxy.paging)
     implementation(Libs.Epoxy.dataBinding)
     implementation(Libs.mvRx)
+    implementation(Libs.autoDispose.core)
+    implementation(Libs.autoDispose.android)
+    implementation(Libs.autoDispose.androidArch)
 
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")

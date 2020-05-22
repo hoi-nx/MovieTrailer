@@ -20,6 +20,11 @@ object Dependencies{
 }
 
 object Libs {
+    object versions {
+        const val autodispose = "1.4.0"
+
+    }
+
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.0-alpha08"
     const val mvRx = "com.airbnb.android:mvrx:1.3.0"
     const val gravitySnapHelper = "com.github.rubensousa:gravitysnaphelper:2.2.0"
@@ -33,6 +38,15 @@ object Libs {
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
     const val okio = "com.squareup.okio:okio:2.5.0"
     const val timber = "com.jakewharton.timber:timber:4.7.1"
+    const val tapTargetView = "com.getkeepsafe.taptargetview:taptargetview:1.13.0"
+
+
+    object autoDispose {
+        const val core = "com.uber.autodispose:autodispose:${versions.autodispose}"
+        const val android = "com.uber.autodispose:autodispose-android:${versions.autodispose}"
+        const val androidArch = "com.uber.autodispose:autodispose-android-archcomponents:${versions.autodispose}"
+        const val lifecycle = "com.uber.autodispose:autodispose-lifecycle:${versions.autodispose}"
+    }
 
     object Google {
         const val material = "com.google.android.material:material:1.1.0-alpha09"
@@ -53,6 +67,7 @@ object Libs {
         const val rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+
     }
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"
@@ -125,6 +140,8 @@ object Libs {
         const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
         const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.19"
         const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
+        const val relay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
+
     }
 
     object Dagger {

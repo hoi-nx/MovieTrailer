@@ -33,6 +33,13 @@ dependencies {
     implementation(Libs.timber)
     implementation(Libs.OkHttp.okhttp)
     implementation(Libs.OkHttp.loggingInterceptor)
+    implementation(Libs.autoDispose.core)
+    implementation(Libs.autoDispose.android)
+    implementation(Libs.autoDispose.androidArch)
+    implementation(Libs.RxJava.relay)
+    implementation(Libs.Dagger.dagger)
+    implementation(Libs.tapTargetView)
+    kapt(Libs.Dagger.compiler)
 
 
     testImplementation("junit:junit:4.12")

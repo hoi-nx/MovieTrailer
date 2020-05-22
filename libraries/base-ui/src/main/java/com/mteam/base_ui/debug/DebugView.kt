@@ -11,11 +11,13 @@ import okhttp3.OkHttpClient
 
 class DebugView(
     context: Context,
-    attrs: AttributeSet? = null,
-    private val client: Lazy<OkHttpClient>,
-    private val lumberYard: LumberYard,
-    private val appConfig: AppConfig
+    attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
+
+    fun onDrawerOpened() {
+
+    }
+
     private val binding = DebugViewContentBinding.inflate(LayoutInflater.from(context), this, true)
 
     internal val icon = binding.debugIcon
