@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.view.doOnLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import com.getkeepsafe.taptargetview.TapTarget
-import com.getkeepsafe.taptargetview.TapTargetView
 import com.mteam.base_ui.R
 import com.mteam.base_ui.databinding.DebugActivityBinding
 import com.mteam.base_ui.debug.DebugView
+import com.mteam.base_ui.taptargetview.TapTarget
+import com.mteam.base_ui.taptargetview.TapTargetView
 
 
 class DebugViewContainer : ViewContainer {

@@ -52,6 +52,9 @@
         <action
             android:id="@+id/toDebugView"
             app:destination="@id/debugActivity" />
+        <action
+            android:id="@+id/toTagetView"
+            app:destination="@id/fragmentTapTargetView" />
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
@@ -87,7 +90,7 @@
     <fragment
         android:id="@+id/fragmentCoroutineUseCase"
         android:name="com.mteam.movie_trailer.fragment.FragmentCoroutineUseCase"
-        android:label="FragmentCoroutineUseCase" >
+        android:label="FragmentCoroutineUseCase">
         <action
             android:id="@+id/tofragmentSingleNetworkRequest"
             app:destination="@id/fragmentSingleNetworkRequest" />
@@ -201,4 +204,8 @@
         android:id="@+id/debugActivity"
         android:name="com.mteam.movie_trailer.debug.DebugActivity"
         android:label="DebugActivity" />
+    <fragment
+        android:id="@+id/fragmentTapTargetView"
+        android:name="com.mteam.movie_trailer.fragment.FragmentTapTargetView"
+        android:label="FragmentTapTargetView" />
 </navigation>

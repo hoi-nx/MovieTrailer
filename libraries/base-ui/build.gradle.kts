@@ -38,7 +38,7 @@ dependencies {
     implementation(Libs.autoDispose.androidArch)
     implementation(Libs.RxJava.relay)
     implementation(Libs.Dagger.dagger)
-    implementation(Libs.tapTargetView)
+//    implementation(Libs.tapTargetView)
     kapt(Libs.Dagger.compiler)
 
 

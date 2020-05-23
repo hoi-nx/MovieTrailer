@@ -40,10 +40,10 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : Fragment() {
                 render(uiState)
             }
         })
-       btnLoadData.setOnClickListener {
+        btnLoadData.setOnClickListener {
             viewModel.loadData()
         }
-       btnClearDatabase.setOnClickListener {
+        btnClearDatabase.setOnClickListener {
             viewModel.clearDatabase()
         }
     }
@@ -82,12 +82,18 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : Fragment() {
         when (uiState.dataSource) {
             DataSource.Network -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(context!!.resources.getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(
+                    context!!.resources.getDrawable(R.drawable.ic_check_green_24dp)
+                )
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             DataSource.Database -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(context!!.resources.getDrawable(R.drawable.ic_check_green_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(
+                    context!!.resources.getDrawable(
+                        R.drawable.ic_check_green_24dp
+                    )
+                )
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }
@@ -104,12 +110,20 @@ class ContinueCoroutineWhenUserLeavesScreenActivity : Fragment() {
         when (uiState.dataSource) {
             is DataSource.Network -> {
                 progressBarLoadFromNetwork.setGone()
-                imageViewNetworkLoadSuccessOrError.setImageDrawable(context!!.resources.getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewNetworkLoadSuccessOrError.setImageDrawable(
+                    context!!.resources.getDrawable(
+                        R.drawable.ic_clear_red_24dp
+                    )
+                )
                 imageViewNetworkLoadSuccessOrError.setVisible()
             }
             is DataSource.Database -> {
                 progressBarLoadFromDb.setGone()
-                imageViewDatabaseLoadSuccessOrError.setImageDrawable(context!!.resources.getDrawable(R.drawable.ic_clear_red_24dp))
+                imageViewDatabaseLoadSuccessOrError.setImageDrawable(
+                    context!!.resources.getDrawable(
+                        R.drawable.ic_clear_red_24dp
+                    )
+                )
                 imageViewDatabaseLoadSuccessOrError.setVisible()
             }
         }

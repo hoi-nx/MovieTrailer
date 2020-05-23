@@ -44,5 +44,8 @@ class FragmentChooseExample : Fragment() {
         debugView.setOnClickListener {
             findNavController().navigate(R.id.toDebugView)
         }
+        targetView.setOnClickListener {
+            findNavController().navigate(R.id.toTagetView)
+        }
     }
 }
